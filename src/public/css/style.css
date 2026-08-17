@@ -1,0 +1,296 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 360px;
+    padding: 32px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.auth-card h1 {
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+}
+
+.field {
+    margin-bottom: 16px;
+}
+
+.field label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+}
+
+.error {
+    background: #fdecea;
+    color: #b3261e;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+.switch-link {
+    margin-top: 16px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* --- App layout (sidebar + content) --- */
+
+body.app {
+    display: block;
+    align-items: unset;
+    justify-content: unset;
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    border-right: 1px solid #e0e0e0;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 4px;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.sidebar a:hover {
+    background: #f2f2f2;
+}
+
+.sidebar a.active {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.sidebar a.logout-link {
+    margin-top: auto;
+    color: #b3261e;
+}
+
+.content {
+    flex: 1;
+    padding: 24px 32px;
+    max-width: 1100px;
+}
+
+.content h1 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+}
+
+/* --- Split panel (Kanbas builder) --- */
+
+.split-panel {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.panel {
+    flex: 1;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.panel h2 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+/* --- Item grid / cards --- */
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.item-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 12px;
+    text-decoration: none;
+    color: #1a1a1a;
+}
+
+.item-card:hover {
+    border-color: #1a1a1a;
+}
+
+.item-card .name {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.item-card .price {
+    color: #1a1a1a;
+    font-size: 0.95rem;
+}
+
+.item-card .unit {
+    color: #777;
+    font-size: 0.8rem;
+}
+
+.search-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-box button {
+    width: auto;
+    padding: 8px 16px;
+}
+
+/* --- Tables --- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.totals {
+    text-align: right;
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
+.totals .grand {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.inline-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.inline-form input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.inline-form button, .small-btn {
+    width: auto;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+.remove-btn {
+    background: transparent;
+    color: #b3261e;
+    border: 1px solid #b3261e;
+    width: auto;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+}
+
+.remove-btn:hover {
+    background: #fdecea;
+}
+
+.kanbas-list-item {
+    display: block;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: #1a1a1a;
+}
+
+.kanbas-list-item:hover {
+    border-color: #1a1a1a;
+}
+
+.kanbas-list-item .meta {
+    color: #777;
+    font-size: 0.85rem;
+}
+
+.empty-state {
+    color: #777;
+    font-size: 0.9rem;
+    padding: 24px 0;
+    text-align: center;
+}
