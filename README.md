@@ -1,6 +1,6 @@
 # Kanbas Digital Estimation System (KDES)
 
-Build a list ("Kanbas") of school supply items, add quantities and extra costs, and get a total spending estimate before you shop. No account needed, no server needed — open and use immediately.
+Build a list ("Kanbas") of school supply items, add quantities and extra costs, and get a total spending estimate before you shop. No account needed, no server needed just use it.
 
 ## Features
 - Browse/search school supply items
