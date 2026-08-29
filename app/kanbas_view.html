@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kanbas Detail — KANBAS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app">
+<div class="app-layout">
+    <div id="nav-container"></div>
+    <div class="content">
+        <p><a href="saved_kanbas.html">&larr; Back to Saved Kanbas</a></p>
+        <div id="view-container"><div class="empty-state">Loading...</div></div>
+    </div>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/kanbas-store.js"></script>
+<script>
+    renderNav('saved');
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const kanbas = id ? getKanbasById(id) : null;
+    const container = document.getElementById('view-container');
+
+    if (!kanbas) {
+        container.innerHTML = '<h1>Kanbas not found</h1>';
+    } else {
+        const date = new Date(kanbas.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const totals = calculateTotals(kanbas);
+
+        let itemsHtml = '<div class="empty-state">No items in this Kanbas.</div>';
+        if (kanbas.items.length > 0) {
+            itemsHtml = '<table><tr><th>Item</th><th>Qty</th><th>Unit Price</th><th>Line Total</th></tr>';
+            kanbas.items.forEach(function (row) {
+                itemsHtml += '<tr>' +
+                    '<td>' + row.name + '</td>' +
+                    '<td>' + row.quantity + ' ' + row.unit + '</td>' +
+                    '<td>' + formatPeso(row.price) + '</td>' +
+                    '<td>' + formatPeso(row.price * row.quantity) + '</td>' +
+                    '</tr>';
+            });
+            itemsHtml += '</table>';
+        }
+
+        let costsHtml = '';
+        if (kanbas.extra_costs.length > 0) {
+            costsHtml = '<h2 style="margin-top:16px;">Extra Costs</h2><table>';
+            kanbas.extra_costs.forEach(function (cost) {
+                costsHtml += '<tr><td>' + cost.label + '</td><td>' + formatPeso(cost.amount) + '</td></tr>';
+            });
+            costsHtml += '</table>';
+        }
+
+        container.innerHTML =
+            '<h1>' + kanbas.name + '</h1>' +
+            '<p style="color:#777; margin-bottom:16px;">' + kanbas.category + ' &middot; Created ' + date + '</p>' +
+            '<div class="panel">' +
+            '<h2>Items</h2>' + itemsHtml + costsHtml +
+            '<div class="totals">' +
+            '<div>Items: ' + formatPeso(totals.itemsTotal) + '</div>' +
+            '<div>Extra Costs: ' + formatPeso(totals.extraTotal) + '</div>' +
+            '<div class="grand">Total Estimate: ' + formatPeso(totals.grandTotal) + '</div>' +
+            '</div>' +
+            '<button type="button" id="delete-btn" class="remove-btn" style="margin-top:16px;">Delete Kanbas</button>' +
+            '</div>';
+
+        document.getElementById('delete-btn').addEventListener('click', function () {
+            if (confirm('Delete this Kanbas? This cannot be undone.')) {
+                deleteKanbas(kanbas.id);
+                window.location.href = 'saved_kanbas.html';
+            }
+        });
+    }
+</script>
+</body>
+</html>

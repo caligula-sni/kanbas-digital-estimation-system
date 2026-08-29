@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Kanbas — KANBAS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app">
+<div class="app-layout">
+    <div id="nav-container"></div>
+    <div class="content">
+        <h1>Create a Kanbas</h1>
+
+        <div class="panel" style="max-width:420px;">
+            <div id="existing-draft-warning"></div>
+            <div id="name-error" class="error" style="display:none;"></div>
+
+            <form onsubmit="return false;">
+                <div class="field">
+                    <label for="name">Kanbas Name</label>
+                    <input type="text" id="name" placeholder="e.g. School Supplies for Sem 1" required>
+                </div>
+                <div class="field">
+                    <label for="category">Category</label>
+                    <select id="category" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
+                        <option value="school_supplies">School Supplies</option>
+                        <option value="food">Food & Groceries</option>
+                        <option value="hardware">Hardware & Woodwork</option>
+                        <option value="steelwork">Steelwork & Construction</option>
+                        <option value="hygiene">Hygiene & Household</option>
+                        <option value="mixed">Mixed / DIY (all categories)</option>
+                    </select>
+                </div>
+                <button type="button" id="start-btn">Start Building</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/kanbas-store.js"></script>
+<script>
+    renderNav('kanbas');
+
+    const existing = getDraft();
+    if (existing) {
+        document.getElementById('existing-draft-warning').innerHTML =
+            '<div class="error" style="background:#fff8e1; color:#8a6d00;">' +
+            'You already have an unsaved Kanbas in progress ("' + existing.name + '"). ' +
+            'Starting a new one will discard it. <a href="kanbas_build.html">Go back to it instead</a>.' +
+            '</div>';
+    }
+
+    document.getElementById('start-btn').addEventListener('click', function () {
+        const name = document.getElementById('name').value.trim();
+        const category = document.getElementById('category').value;
+        const errorBox = document.getElementById('name-error');
+
+        if (name === '') {
+            errorBox.textContent = 'Kanbas name is required.';
+            errorBox.style.display = 'block';
+            return;
+        }
+
+        startDraft(name, category);
+        window.location.href = 'kanbas_build.html';
+    });
+</script>
+</body>
+</html>

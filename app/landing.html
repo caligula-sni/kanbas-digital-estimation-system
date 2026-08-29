@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KANBAS — Digital Expenditures Estimation Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="landing">
+        <nav class="landing-nav">
+            <span class="landing-wordmark">KANBAS</span>
+            <a href="home.html" class="enter-link">Enter App →</a>
+        </nav>
+
+        <div class="hero">
+            <div class="hero-eyebrow">// estimate before you spend</div>
+            <h1>
+                Digital Expenditures<br>
+                Estimation Service for<br>
+                <span class="word-stamp-wrap"><span class="word-stamp" id="word-stamp">STUDENTS</span></span>
+            </h1>
+            <p class="hero-sub">
+                Build a list, add what you need, and see the total before you leave the house.
+                No sign-up, no server — your Kanbas lives right in your browser.
+            </p>
+            <div class="hero-cta">
+                <a href="kanbas_new.html" style="text-decoration:none;">
+                    <button class="btn-primary" type="button">Start a Kanbas</button>
+                </a>
+                <a href="items.html" class="btn-ghost">Browse the catalog</a>
+            </div>
+        </div>
+
+        <div class="how-it-works">
+            <div class="how-it-works-inner">
+                <div>
+                    <div class="step-num">01</div>
+                    <div class="step-title">Name your Kanbas</div>
+                    <div class="step-desc">Give your list a name — a semester's supplies, a print job, whatever you're estimating.</div>
+                </div>
+                <div>
+                    <div class="step-num">02</div>
+                    <div class="step-title">Add what you need</div>
+                    <div class="step-desc">Search the catalog, add items and quantities, throw in fare or other extra costs.</div>
+                </div>
+                <div>
+                    <div class="step-num">03</div>
+                    <div class="step-title">See the total</div>
+                    <div class="step-desc">Your estimate updates as you go. Save it, revisit it, adjust it anytime.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const words = ['STUDENTS', 'OFFICE WORKERS', 'PRINT SHOPS', 'PHOTO STUDIOS', 'EVENT PLANNERS', 'SMALL BUSINESSES'];
+    let index = 0;
+    const el = document.getElementById('word-stamp');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function nextWord() {
+        index = (index + 1) % words.length;
+        el.textContent = words[index];
+        if (!prefersReducedMotion) {
+            el.classList.remove('stamp-anim');
+            void el.offsetWidth; // restart animation
+            el.classList.add('stamp-anim');
+        }
+    }
+
+    setInterval(nextWord, 1900);
+</script>
+</body>
+</html>

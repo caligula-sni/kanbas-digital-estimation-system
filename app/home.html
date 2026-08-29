@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home — KANBAS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app">
+<div class="app-layout">
+    <div id="nav-container"></div>
+    <div class="content">
+        <h1>Kanbas Digital Estimation System</h1>
+        <p style="color:#777; margin-bottom:20px;">Build a list, estimate your spending, before you buy.</p>
+
+        <div class="panel" style="max-width:600px;">
+            <h2>Recent Kanbas</h2>
+            <div id="recent-list">
+                <div class="empty-state">Loading...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/kanbas-store.js"></script>
+<script>
+    renderNav('home');
+
+    const list = getSavedKanbas().slice(-5).reverse();
+    const container = document.getElementById('recent-list');
+
+    if (list.length === 0) {
+        container.innerHTML = '<div class="empty-state">No Kanbas yet. <a href="kanbas_new.html">Create your first one</a>.</div>';
+    } else {
+        container.innerHTML = list.map(function (k) {
+            const date = new Date(k.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            return '<a class="kanbas-list-item" href="kanbas_view.html?id=' + k.id + '">' +
+                '<strong>' + k.name + '</strong>' +
+                '<div class="meta">' + date + '</div>' +
+                '</a>';
+        }).join('');
+    }
+</script>
+</body>
+</html>

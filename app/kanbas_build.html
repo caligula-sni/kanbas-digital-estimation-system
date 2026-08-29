@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kanbas Builder — KANBAS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app">
+<div class="app-layout">
+    <div id="nav-container"></div>
+    <div class="content">
+        <div id="no-draft-notice" style="display:none;">
+            <h1>No Kanbas in progress</h1>
+            <p><a href="kanbas_new.html">Start a new Kanbas</a> first.</p>
+        </div>
+
+        <div id="builder" style="display:none;">
+            <h1 id="kanbas-title"></h1>
+            <p id="kanbas-category" style="color:#777; margin-top:-12px; margin-bottom:16px;"></p>
+
+            <div class="split-panel">
+                <div class="panel">
+                    <h2>Your Kanbas</h2>
+                    <div id="items-table"></div>
+
+                    <h2 style="margin-top:20px;">Extra Costs</h2>
+                    <div id="costs-table"></div>
+
+                    <div class="inline-form">
+                        <input type="text" id="cost-label" placeholder="Label (e.g. fare)">
+                        <input type="number" id="cost-amount" placeholder="Amount" step="0.01" min="0.01" style="width:100px;">
+                        <button type="button" id="add-cost-btn" class="small-btn">Add Cost</button>
+                    </div>
+
+                    <div class="totals" id="totals"></div>
+
+                    <div style="display:flex; gap:8px; margin-top:16px;">
+                        <button type="button" id="save-btn">Save Kanbas</button>
+                        <button type="button" id="discard-btn" class="remove-btn">Discard</button>
+                    </div>
+                    <div id="save-error" class="error" style="display:none; margin-top:8px;"></div>
+                </div>
+
+                <div class="panel">
+                    <h2>Add Materials</h2>
+                    <form class="search-box" onsubmit="return false;">
+                        <input type="text" id="search-input" placeholder="Search school supplies...">
+                        <button type="button" id="search-btn">Search</button>
+                    </form>
+                    <div id="search-results"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/items-data.js"></script>
+<script src="js/kanbas-store.js"></script>
+<script>
+    renderNav('kanbas');
+
+    let draft = getDraft();
+
+    if (!draft) {
+        document.getElementById('no-draft-notice').style.display = 'block';
+    } else {
+        document.getElementById('builder').style.display = 'block';
+        renderDraft();
+        renderResults('');
+    }
+
+    function renderDraft() {
+        draft = getDraft();
+        document.getElementById('kanbas-title').textContent = draft.name;
+        document.getElementById('kanbas-category').textContent = getCategoryLabel(draft.category);
+
+        const itemsBox = document.getElementById('items-table');
+        if (draft.items.length === 0) {
+            itemsBox.innerHTML = '<div class="empty-state">No items added yet. Click an item on the right to add it.</div>';
+        } else {
+            let html = '<table><tr><th>Item</th><th>Qty</th><th>Line Total</th><th></th></tr>';
+            draft.items.forEach(function (row, index) {
+                const lineTotal = row.price * row.quantity;
+                html += '<tr>' +
+                    '<td>' + row.name + '</td>' +
+                    '<td>' + row.quantity + ' ' + row.unit + '</td>' +
+                    '<td>' + formatPeso(lineTotal) + '</td>' +
+                    '<td><button type="button" class="remove-btn remove-item-btn" data-index="' + index + '">Remove</button></td>' +
+                    '</tr>';
+            });
+            html += '</table>';
+            itemsBox.innerHTML = html;
+        }
+
+        const costsBox = document.getElementById('costs-table');
+        if (draft.extra_costs.length === 0) {
+            costsBox.innerHTML = '';
+        } else {
+            let html = '<table>';
+            draft.extra_costs.forEach(function (cost, index) {
+                html += '<tr>' +
+                    '<td>' + cost.label + '</td>' +
+                    '<td>' + formatPeso(cost.amount) + '</td>' +
+                    '<td><button type="button" class="remove-btn remove-cost-btn" data-index="' + index + '">Remove</button></td>' +
+                    '</tr>';
+            });
+            html += '</table>';
+            costsBox.innerHTML = html;
+        }
+
+        const totals = calculateTotals(draft);
+        document.getElementById('totals').innerHTML =
+            '<div>Items: ' + formatPeso(totals.itemsTotal) + '</div>' +
+            '<div>Extra Costs: ' + formatPeso(totals.extraTotal) + '</div>' +
+            '<div class="grand">Total Estimate: ' + formatPeso(totals.grandTotal) + '</div>';
+
+        document.querySelectorAll('.remove-item-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                removeItemFromDraft(parseInt(btn.dataset.index, 10));
+                renderDraft();
+            });
+        });
+        document.querySelectorAll('.remove-cost-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                removeCostFromDraft(parseInt(btn.dataset.index, 10));
+                renderDraft();
+            });
+        });
+    }
+
+    function renderResults(query) {
+        const filterCategory = draft.category === 'mixed' ? '' : draft.category;
+        const results = searchItems(query, filterCategory);
+        const box = document.getElementById('search-results');
+
+        if (results.length === 0) {
+            box.innerHTML = '<div class="empty-state">No items found.</div>';
+            return;
+        }
+
+        box.innerHTML = '<div class="item-grid">' + results.map(function (item) {
+            return '<div class="item-card add-item-card" data-id="' + item.id + '" style="cursor:pointer;">' +
+                '<div class="name">' + item.name + '</div>' +
+                '<div class="price">' + formatPeso(item.price) + '</div>' +
+                '<div class="unit">per ' + item.unit + ' — click to add</div>' +
+                '</div>';
+        }).join('') + '</div>';
+
+        document.querySelectorAll('.add-item-card').forEach(function (card) {
+            card.addEventListener('click', function () {
+                const item = getItemById(card.dataset.id);
+                addItemToDraft({ item_id: item.id, name: item.name, price: item.price, unit: item.unit, quantity: 1 });
+                renderDraft();
+            });
+        });
+    }
+
+    document.getElementById('search-btn').addEventListener('click', function () {
+        renderResults(document.getElementById('search-input').value);
+    });
+    document.getElementById('search-input').addEventListener('keyup', function () {
+        renderResults(this.value);
+    });
+
+    document.getElementById('add-cost-btn').addEventListener('click', function () {
+        const label = document.getElementById('cost-label').value.trim();
+        const amount = parseFloat(document.getElementById('cost-amount').value);
+        if (!label || !amount || amount <= 0) return;
+        addCostToDraft(label, amount);
+        document.getElementById('cost-label').value = '';
+        document.getElementById('cost-amount').value = '';
+        renderDraft();
+    });
+
+    document.getElementById('save-btn').addEventListener('click', function () {
+        const id = saveDraftAsKanbas();
+        const errorBox = document.getElementById('save-error');
+        if (!id) {
+            errorBox.textContent = 'Add at least one item before saving.';
+            errorBox.style.display = 'block';
+            return;
+        }
+        window.location.href = 'kanbas_view.html?id=' + id;
+    });
+
+    document.getElementById('discard-btn').addEventListener('click', function () {
+        if (confirm('Discard this Kanbas?')) {
+            clearDraft();
+            window.location.href = 'kanbas_new.html';
+        }
+    });
+</script>
+</body>
+</html>
