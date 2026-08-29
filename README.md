@@ -1,44 +1,45 @@
 # Kanbas Digital Estimation System (KDES)
 
-Build a list ("Kanbas") of school supply items, add quantities and extra costs, and get a total spending estimate before you shop.
+Build a list ("Kanbas") of school supply items, add quantities and extra costs, and get a total spending estimate before you shop. No account needed, no server needed — open and use immediately.
 
 ## Features
-- User accounts (register/login)
-- Create and save Kanbas (item lists)
 - Browse/search school supply items
+- Create and save Kanbas (item lists) — stored in your browser
 - Add extra costs (fare, fuel, etc.)
 - Auto-calculated total estimate
 
 ## Tech Stack
-- Frontend: HTML, CSS, vanilla JS
-- Backend: PHP (vanilla, PDO)
-- Database: MySQL
+- HTML, CSS, vanilla JS — fully static, no backend
+- Item catalog is a static JS file (`app/js/items-data.js`)
+- Kanbas data lives in browser localStorage
 
 (See `docs/architecture.md` for details and reasoning.)
 
-## Getting Started
+## Running It
+No install, no server required.
+
+**Option 1 — just open it:**
+Open `app/landing.html` directly in your browser (or `index.html` at the repo root, which redirects there).
+
+**Option 2 — local static server** (needed if your browser restricts localStorage on `file://`):
 ```bash
-git clone <repo-url>
-cd kdes
-# import schema (see docs/schema.md)
-# configure DB connection
-# serve via local PHP/XAMPP server
+cd app
+python3 -m http.server 8000
+# visit http://localhost:8000/landing.html
 ```
 
-## Environment Variables
-| Variable | Description |
-|---|---|
-| DB_HOST | MySQL host |
-| DB_NAME | Database name |
-| DB_USER | MySQL user |
-| DB_PASS | MySQL password |
+## Deployment
+Auto-deploys to GitHub Pages on every push to `main` via `.github/workflows/deploy-pages.yml`. Enable Pages in repo Settings → Pages → Source: GitHub Actions (one-time setup).
+
+## Updating Item Prices
+Edit `app/js/items-data.js` directly, commit, push.
 
 ## Project Status
-Prototype complete — all v1 modules implemented (auth, item search, Kanbas builder, saved Kanbas). Ready for local testing (Phase 4) before Facebook beta deployment (Phase 5).
+Fully static prototype — no accounts, no server, no database (see ADR 0005 and 0006). Ready for Facebook beta via GitHub Pages.
 
 ## Documentation
 - [Requirements](docs/requirements.md)
 - [Architecture](docs/architecture.md)
-- [Schema](docs/schema.md)
+- [Data Model](docs/schema.md)
 - [Testing](docs/testing.md)
 - [Decisions (ADRs)](docs/decisions/)
