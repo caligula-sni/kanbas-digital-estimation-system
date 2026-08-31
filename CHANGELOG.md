@@ -34,3 +34,9 @@
 ### Added
 - Initial project scaffold and docs (requirements, architecture, schema, ADRs)
 - All FR-02 through FR-11 from requirements.md implemented
+
+### Added
+ADR 0013: Added 25 more items for Food and Groceries 
+ADR 0014: Added 32 more items for Hardware and Woodwork 
+ADR 0015: Added 32 more items for Steelwork & COnstruction 
+ADR 0016: Added 25 more items for Steelwork & COnstruction 

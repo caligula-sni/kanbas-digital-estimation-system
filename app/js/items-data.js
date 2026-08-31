@@ -129,7 +129,9 @@ const ITEMS = [
     { id: 134, name: 'Tang Powdered Juice (25g sachet)', category: 'food', unit: 'piece', price: 8.00, description: 'Powdered juice drink mix', verified: false, source: 'Estimated' },
     { id: 135, name: 'Selecta Ice Cream, Cookies & Cream (750ml)', category: 'food', unit: 'piece', price: 195.00, description: 'Ice cream tub', verified: false, source: 'Estimated' },
     { id: 136, name: 'Quaker Oats, Quick Cooking (400g)', category: 'food', unit: 'piece', price: 85.00, description: 'Rolled oats', verified: false, source: 'Estimated' },
-    // Hardware & Woodwork (8)
+  
+
+   // Hardware & Woodwork (8)
     { id: 56, name: 'Plywood Sheet (4x8, ordinary)', category: 'hardware', unit: 'piece', price: 550.00, description: 'Ordinary plywood, 4ft x 8ft', verified: true, source: '2026 PH construction material price list' },
     { id: 57, name: 'Lumber 2x2 (8ft, coco)', category: 'hardware', unit: 'piece', price: 75.00, description: 'Coco lumber, 8 feet length', verified: true, source: '2026 PH construction material price list' },
     { id: 58, name: 'Common Wire Nails (1kg)', category: 'hardware', unit: 'kg', price: 45.00, description: 'Assorted sizes', verified: true, source: '2026 PH construction material price list' },
@@ -170,8 +172,9 @@ const ITEMS = [
     { id: 165, name: 'Total Extension Cord, 10m', category: 'hardware', unit: 'piece', price: 350.00, description: 'Heavy-duty extension cord', verified: false, source: 'Estimated' },
     { id: 166, name: 'Tolsen LED Work Light', category: 'hardware', unit: 'piece', price: 280.00, description: 'Rechargeable LED work light', verified: false, source: 'Estimated' },
     { id: 167, name: 'Stanley Utility Knife Blades (10pcs)', category: 'hardware', unit: 'piece', price: 55.00, description: 'Replacement utility blades, pack of 10', verified: false, source: 'Estimated' },
-    
     { id: 168, name: 'INGCO Staple Gun', category: 'hardware', unit: 'piece', price: 380.00, description: 'Manual staple gun', verified: false, source: 'Estimated' },
+   
+
     // Steelwork & Construction (8)
     { id: 64, name: 'Portland Cement (40kg bag)', category: 'steelwork', unit: 'piece', price: 270.00, description: 'Type 1 Portland cement', verified: true, source: '2026 PH construction material price list' },
     { id: 65, name: 'Deformed Rebar 10mm (6m)', category: 'steelwork', unit: 'piece', price: 190.00, description: 'Grade 40 deformed bar', verified: true, source: '2026 PH construction material price list' },
@@ -181,6 +184,40 @@ const ITEMS = [
     { id: 69, name: 'Steel Angle Bar (6m)', category: 'steelwork', unit: 'piece', price: 380.00, description: '2mm thick, 6 meter length', verified: false, source: 'Estimated' },
     { id: 70, name: 'Welding Rod (1kg pack)', category: 'steelwork', unit: 'kg', price: 150.00, description: 'E6013 welding rod', verified: false, source: 'Estimated' },
     { id: 71, name: 'Sand (per sack)', category: 'steelwork', unit: 'piece', price: 60.00, description: 'Washed sand, sack', verified: false, source: 'Estimated' },
+        // Steelwork & Construction — expansion batch, ADR 0015
+    { id: 169, name: 'Holcim Portland Cement (40kg bag)', category: 'steelwork', unit: 'piece', price: 245.00, description: 'Type 1 Portland cement', verified: true, source: 'toolsph.com, 2026' },
+    { id: 170, name: 'Deformed Rebar 12mm (6m)', category: 'steelwork', unit: 'piece', price: 255.00, description: 'Grade 40 deformed bar', verified: true, source: '2026 PH construction material price list' },
+    { id: 171, name: 'Deformed Rebar 16mm (6m)', category: 'steelwork', unit: 'piece', price: 440.00, description: 'Grade 40 deformed bar', verified: true, source: '2026 PH construction material price list' },
+    { id: 172, name: 'Hollow Blocks (6 inch)', category: 'steelwork', unit: 'piece', price: 18.00, description: 'CHB, 6 inch', verified: true, source: '2026 PH construction material price list' },
+    { id: 173, name: 'Republic Cement (40kg bag)', category: 'steelwork', unit: 'piece', price: 260.00, description: 'Type 1 Portland cement', verified: false, source: 'Estimated' },
+    { id: 174, name: 'Eagle Cement (40kg bag)', category: 'steelwork', unit: 'piece', price: 250.00, description: 'Type 1 Portland cement', verified: false, source: 'Estimated' },
+    { id: 175, name: 'CEMEX Rizal Cement (40kg bag)', category: 'steelwork', unit: 'piece', price: 240.00, description: 'Type 1 Portland cement', verified: false, source: 'Estimated' },
+    { id: 176, name: 'Deformed Rebar 8mm (6m)', category: 'steelwork', unit: 'piece', price: 130.00, description: 'Grade 40 deformed bar', verified: false, source: 'Estimated' },
+    { id: 177, name: 'Deformed Rebar 20mm (6m)', category: 'steelwork', unit: 'piece', price: 620.00, description: 'Grade 40 deformed bar', verified: false, source: 'Estimated' },
+    { id: 178, name: 'Hollow Blocks (5 inch)', category: 'steelwork', unit: 'piece', price: 16.00, description: 'CHB, 5 inch', verified: false, source: 'Estimated' },
+    { id: 179, name: 'Union Galvasteel GI Sheet, Gauge 24 (8ft)', category: 'steelwork', unit: 'piece', price: 250.00, description: 'Corrugated GI roofing sheet', verified: false, source: 'Estimated' },
+    { id: 180, name: 'PhilSteel Roofing Sheet, Rib-type (8ft)', category: 'steelwork', unit: 'piece', price: 320.00, description: 'Rib-type roofing sheet', verified: false, source: 'Estimated' },
+    { id: 181, name: 'Neltex PVC Pipe, 4 inch (3m)', category: 'steelwork', unit: 'piece', price: 380.00, description: 'PVC pipe for plumbing', verified: false, source: 'Estimated' },
+    { id: 182, name: 'Neltex PVC Pipe, 2 inch (3m)', category: 'steelwork', unit: 'piece', price: 180.00, description: 'PVC pipe for plumbing', verified: false, source: 'Estimated' },
+    { id: 183, name: 'Atlanta PVC Elbow Fitting, 4 inch', category: 'steelwork', unit: 'piece', price: 45.00, description: 'PVC elbow fitting', verified: false, source: 'Estimated' },
+    { id: 184, name: 'Royal Welding Rod, E6013 (1kg)', category: 'steelwork', unit: 'kg', price: 155.00, description: 'General purpose welding rod', verified: false, source: 'Estimated' },
+    { id: 185, name: 'Phoenix Welding Rod, E6011 (1kg)', category: 'steelwork', unit: 'kg', price: 150.00, description: 'Deep penetration welding rod', verified: false, source: 'Estimated' },
+    { id: 186, name: 'Boysen Elastomeric Waterproofing (4L)', category: 'steelwork', unit: 'piece', price: 850.00, description: 'Roof/wall waterproofing coating', verified: false, source: 'Estimated' },
+    { id: 187, name: 'Davies Concrete Sealer (4L)', category: 'steelwork', unit: 'piece', price: 620.00, description: 'Concrete surface sealer', verified: false, source: 'Estimated' },
+    { id: 188, name: 'Columbia THHN Electrical Wire, #12 (per meter)', category: 'steelwork', unit: 'piece', price: 25.00, description: 'Electrical wire, sold per meter', verified: false, source: 'Estimated' },
+    { id: 189, name: 'Firelink Electrical Conduit, 1/2 inch (3m)', category: 'steelwork', unit: 'piece', price: 65.00, description: 'PVC electrical conduit', verified: false, source: 'Estimated' },
+    { id: 190, name: 'Panasonic Convenience Outlet', category: 'steelwork', unit: 'piece', price: 85.00, description: 'Wall outlet, single gang', verified: false, source: 'Estimated' },
+    { id: 191, name: 'Omni Circuit Breaker, 20A', category: 'steelwork', unit: 'piece', price: 220.00, description: 'Panel circuit breaker', verified: false, source: 'Estimated' },
+    { id: 192, name: 'BRC Welded Wire Mesh, 4mm (per sheet)', category: 'steelwork', unit: 'piece', price: 380.00, description: 'Welded wire mesh for slabs', verified: false, source: 'Estimated' },
+    { id: 193, name: 'Chain Link Fence, 6ft (per meter)', category: 'steelwork', unit: 'piece', price: 180.00, description: 'Galvanized chain link fencing', verified: false, source: 'Estimated' },
+    { id: 194, name: 'Barbed Wire (roll, 400m)', category: 'steelwork', unit: 'piece', price: 1450.00, description: 'GI barbed wire, full roll', verified: false, source: 'Estimated' },
+    { id: 195, name: 'G.I. Pipe, 1/2 inch (6m)', category: 'steelwork', unit: 'piece', price: 220.00, description: 'Galvanized iron pipe', verified: false, source: 'Estimated' },
+    { id: 196, name: 'Steel Wire Mesh, per roll', category: 'steelwork', unit: 'piece', price: 950.00, description: 'Wire mesh for reinforcement', verified: false, source: 'Estimated' },
+    { id: 197, name: 'Angle Bar 1x1x1/8 (6m)', category: 'steelwork', unit: 'piece', price: 210.00, description: 'Small steel angle bar', verified: false, source: 'Estimated' },
+    { id: 198, name: 'Flat Bar 1/4x1 (6m)', category: 'steelwork', unit: 'piece', price: 195.00, description: 'Steel flat bar', verified: false, source: 'Estimated' },
+    { id: 199, name: 'C-Purlins, 2x4 (6m)', category: 'steelwork', unit: 'piece', price: 320.00, description: 'Roof framing purlin', verified: false, source: 'Estimated' },
+    { id: 200, name: 'Gravel (per sack)', category: 'steelwork', unit: 'piece', price: 65.00, description: 'Washed gravel, sack', verified: false, source: 'Estimated' },
+    
 
     // Hygiene & Household (15)
     { id: 72, name: 'Toilet Soap (55g)', category: 'hygiene', unit: 'piece', price: 22.00, description: 'Safeguard Pure White, 55g bar', verified: true, source: 'DTI SRP Bulletin' },
@@ -197,7 +234,34 @@ const ITEMS = [
     { id: 83, name: 'Rubbing Alcohol (70%, 250ml)', category: 'hygiene', unit: 'piece', price: 45.00, description: 'Isopropyl alcohol, antiseptic', verified: false, source: 'Estimated' },
     { id: 84, name: 'Fabric Softener (sachet)', category: 'hygiene', unit: 'piece', price: 7.00, description: 'Single-use fabric softener sachet', verified: false, source: 'Estimated' },
     { id: 85, name: 'Trash Bags (roll of 10, medium)', category: 'hygiene', unit: 'piece', price: 30.00, description: 'Medium size, roll of 10', verified: false, source: 'Estimated' },
-    { id: 86, name: 'Hand Soap, liquid (250ml pump)', category: 'hygiene', unit: 'piece', price: 65.00, description: 'Liquid hand soap, pump bottle', verified: false, source: 'Estimated' }
+    { id: 86, name: 'Hand Soap, liquid (250ml pump)', category: 'hygiene', unit: 'piece', price: 65.00, description: 'Liquid hand soap, pump bottle', verified: false, source: 'Estimated' },
+        // Hygiene & Household — expansion batch, ADR 0016
+    { id: 201, name: 'Rhea Rubbing Alcohol (60ml)', category: 'hygiene', unit: 'piece', price: 26.00, description: '70% isopropyl alcohol', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 202, name: 'Cotton Balls (50s pack)', category: 'hygiene', unit: 'piece', price: 24.00, description: 'Pack of 50 cotton balls', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 203, name: 'Band-Aid Medicated Strip (100s)', category: 'hygiene', unit: 'piece', price: 30.00, description: 'Box of 100 adhesive strips', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 204, name: 'Efficascent Oil (100ml)', category: 'hygiene', unit: 'piece', price: 118.50, description: 'Medicated liniment oil', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 205, name: 'Salonpas Pain Relief Patch (40s box)', category: 'hygiene', unit: 'piece', price: 534.00, description: 'Box of 40 medicated patches', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 206, name: 'Face Mask, 3-ply (50s box)', category: 'hygiene', unit: 'piece', price: 34.80, description: 'Box of 50 disposable face masks', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 207, name: 'Huggies Diapers (pack)', category: 'hygiene', unit: 'piece', price: 693.60, description: 'Diaper pack, size varies', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 208, name: 'Caress Sanitary Napkins (8s)', category: 'hygiene', unit: 'piece', price: 86.40, description: 'Pack of 8 sanitary napkins', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 209, name: 'Tissue Paper (12-roll pack)', category: 'hygiene', unit: 'piece', price: 270.00, description: 'Bathroom tissue, pack of 12 rolls', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 210, name: 'Closeup Toothpaste (20g, 6s pack)', category: 'hygiene', unit: 'piece', price: 39.60, description: 'Pack of 6 travel-size tubes', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 211, name: 'Toothbrush (10s pack)', category: 'hygiene', unit: 'piece', price: 48.00, description: 'Pack of 10 toothbrushes', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 212, name: 'Palmolive Shampoo (11 sachets box)', category: 'hygiene', unit: 'piece', price: 66.00, description: 'Box of 11 shampoo sachets', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 213, name: 'Irish Spring Bath Soap (3-pack)', category: 'hygiene', unit: 'piece', price: 157.20, description: '3-pack bath soap bars', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 214, name: 'Cream Silk Conditioner (12 sachets box)', category: 'hygiene', unit: 'piece', price: 66.00, description: 'Box of 12 conditioner sachets', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 215, name: 'Speed Detergent Powder (55g x6)', category: 'hygiene', unit: 'piece', price: 58.80, description: 'Pack of 6 detergent powder sachets', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 216, name: 'Surf Detergent Bar', category: 'hygiene', unit: 'piece', price: 33.60, description: 'Laundry bar soap', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 217, name: 'Zonrox Bleach (1 gallon)', category: 'hygiene', unit: 'piece', price: 118.80, description: 'Chlorine bleach disinfectant', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 218, name: 'Eveready Battery, Size D', category: 'hygiene', unit: 'piece', price: 42.00, description: 'Single D battery', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 219, name: 'Eveready Battery, Size AA (single)', category: 'hygiene', unit: 'piece', price: 30.00, description: 'Single AA battery', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 220, name: 'Eveready Battery, Size AAA (single)', category: 'hygiene', unit: 'piece', price: 30.00, description: 'Single AAA battery', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 221, name: 'Philips LED Light Bulb 9W', category: 'hygiene', unit: 'piece', price: 107.00, description: 'LED bulb, 9 watts', verified: true, source: '2026 Sari-Sari Store Price List (PinoyNegosyo)' },
+    { id: 222, name: 'Colgate Toothpaste, family size (150g)', category: 'hygiene', unit: 'piece', price: 95.00, description: 'Large family-size tube', verified: false, source: 'Estimated' },
+    { id: 223, name: 'Downy Fabric Conditioner (sachet)', category: 'hygiene', unit: 'piece', price: 7.00, description: 'Single-use fabric conditioner sachet', verified: false, source: 'Estimated' },
+    { id: 224, name: 'Baygon Insect Spray (300ml)', category: 'hygiene', unit: 'piece', price: 145.00, description: 'Multi-insect killer spray', verified: false, source: 'Estimated' },
+    { id: 225, name: 'Glade Air Freshener Spray (280ml)', category: 'hygiene', unit: 'piece', price: 165.00, description: 'Aerosol air freshener', verified: false, source: 'Estimated' },
+
 ];
 
 function searchItems(query, category) {
