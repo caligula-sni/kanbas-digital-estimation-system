@@ -18,6 +18,7 @@
 
 <script src="js/nav.js"></script>
 <script src="js/items-data.js"></script>
+<script src="js/icons-data.js"></script>
 <script src="js/kanbas-store.js"></script>
 <script>
     renderNav('items');
@@ -30,6 +31,7 @@
         container.innerHTML = '<h1>Item not found</h1>';
     } else {
         container.innerHTML =
+            '<div class="item-icon">' + getIconSvg(getIconForItem(item)) + '</div>' +
             '<h1>' + item.name + '</h1>' +
             '<div class="panel" style="max-width:420px;">' +
             '<p><strong>Price:</strong> ' + formatPeso(item.price) + ' per ' + item.unit + '</p>' +

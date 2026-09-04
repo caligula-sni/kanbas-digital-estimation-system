@@ -58,6 +58,7 @@
 
 <script src="js/nav.js"></script>
 <script src="js/items-data.js"></script>
+<script src="js/icons-data.js"></script>
 <script src="js/kanbas-store.js"></script>
 <script>
     renderNav('kanbas');
@@ -143,6 +144,7 @@
 
         box.innerHTML = '<div class="item-grid">' + results.map(function (item) {
             return '<div class="item-card add-item-card" data-id="' + item.id + '" style="cursor:pointer;">' +
+                '<div class="item-icon">' + getIconSvg(getIconForItem(item)) + '</div>' +
                 '<div class="name">' + item.name + '</div>' +
                 '<div class="price">' + formatPeso(item.price) + '</div>' +
                 '<div class="unit">per ' + item.unit + ' — click to add</div>' +
