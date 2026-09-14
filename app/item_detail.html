@@ -31,7 +31,7 @@
         container.innerHTML = '<h1>Item not found</h1>';
     } else {
         container.innerHTML =
-            '<div class="item-icon">' + getIconSvg(getIconForItem(item)) + '</div>' +
+            renderItemThumb(item, 'item-detail-thumb') +
             '<h1>' + item.name + '</h1>' +
             '<div class="panel" style="max-width:420px;">' +
             '<p><strong>Price:</strong> ' + formatPeso(item.price) + ' per ' + item.unit + '</p>' +

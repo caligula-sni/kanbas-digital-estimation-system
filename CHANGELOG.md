@@ -7,6 +7,7 @@
 - 5th category: Hygiene & Household (15 items, 7 verified against DTI SRP bulletin) — ADR 0010
 - `verified`/`source` fields on every catalog item; shown as a tag on item detail pages
 - Category option added to Create Kanbas dropdown
+- Added item thumbnail system — image files named by item ID in `app/images/items/`, with automatic placeholder fallback for items without a photo yet (ADR 0017)
 
 ### Changed
 - Corrected 4 branded item prices sourced earlier but not yet written back: claw hammer (₱250→₱255, Stanley), latex paint (₱220→₱234.50, Boysen), highlighter (₱25→₱48, Stabilo Boss), clearbook (₱55→₱235, Comix — also fixed spec mismatch, was described as 20 pages, actual product is 40 sheets)

@@ -285,3 +285,12 @@ function getCategoryLabel(key) {
     const cat = KANBAS_CATEGORIES.find(function (c) { return c.key === key; });
     return cat ? cat.label : key;
 }
+
+function renderItemThumb(item, sizeClass) {
+    sizeClass = sizeClass || 'item-thumb';
+    return '<div class="' + sizeClass + '">' +
+        '<img src="images/items/' + item.id + '.jpg" alt="' + item.name + '" ' +
+        'onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' +
+        '<div class="item-thumb-placeholder">+ Photo</div>' +
+        '</div>';
+}

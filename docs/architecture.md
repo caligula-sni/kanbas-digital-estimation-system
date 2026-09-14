@@ -16,6 +16,7 @@ Fully static site as of ADR 0006. No server, no database, no build step. Plain H
 - **`kanbas-store.js`** — owns the entire Kanbas lifecycle via localStorage: draft, add/remove items and costs, totals, save, delete
 - **`nav.js`** — injects the sidebar into each page (was PHP's `include('nav.php')`)
 - **Pages** (`home.html`, `items.html`, `item_detail.html`, `kanbas_new.html`, `kanbas_build.html`, `saved_kanbas.html`, `kanbas_view.html`) — each includes the three scripts above and renders using plain JS DOM manipulation
+- **`renderItemThumb()`** (in `items-data.js`) — builds item thumbnail `<img>` tags from `app/images/items/{id}.jpg`, with a CSS-based placeholder fallback for missing images
 
 ## System Flow
 1. Page loads → `renderNav()` injects sidebar, `items-data.js` and `kanbas-store.js` load

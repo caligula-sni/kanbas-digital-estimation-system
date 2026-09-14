@@ -67,7 +67,7 @@
 
         grid.innerHTML = '<div class="item-grid">' + results.map(function (item) {
             return '<a class="item-card" href="item_detail.html?id=' + item.id + '">' +
-                '<div class="item-icon">' + getIconSvg(getIconForItem(item)) + '</div>' +
+                renderItemThumb(item) +
                 '<div class="name">' + item.name + '</div>' +
                 '<div class="price">' + formatPeso(item.price) + '</div>' +
                 '<div class="unit">per ' + item.unit + '</div>' +

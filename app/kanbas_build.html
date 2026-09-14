@@ -144,7 +144,7 @@
 
         box.innerHTML = '<div class="item-grid">' + results.map(function (item) {
             return '<div class="item-card add-item-card" data-id="' + item.id + '" style="cursor:pointer;">' +
-                '<div class="item-icon">' + getIconSvg(getIconForItem(item)) + '</div>' +
+                renderItemThumb(item) +
                 '<div class="name">' + item.name + '</div>' +
                 '<div class="price">' + formatPeso(item.price) + '</div>' +
                 '<div class="unit">per ' + item.unit + ' — click to add</div>' +
